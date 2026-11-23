@@ -6,7 +6,7 @@
 // Function for building the 5 coins
 // Returns vector with the 5 coins
 std::vector<Coin> build_Coins(){
-    std::vector<double> probabilities{0.2,0.4,0.5,0.6,0.8};
+    std::vector<double> probabilities{0.8};
     std::vector<Coin> coins;
     for(double prob : probabilities){
         coins.push_back(Coin(prob));
@@ -30,7 +30,7 @@ int one_Run(){
         else{
             int temp = hot_hand;
             // guarantees a switch of coin to be flipped
-            while(temp == hot_hand) hot_hand = dis(gen);
+            // while(temp == hot_hand) hot_hand = dis(gen);
         }
     }
     // std::cout << num_heads << "Out of " << num_flips << '\n';
