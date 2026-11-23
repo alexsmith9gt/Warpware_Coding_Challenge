@@ -31,7 +31,7 @@ int one_Run(){
             hot_hand = dis(gen);
         }
     }
-    std::cout << num_heads << "Out of " << num_flips << '\n';
+    // std::cout << num_heads << "Out of " << num_flips << '\n';
     return num_heads;
 
 }
