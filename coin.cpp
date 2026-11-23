@@ -12,15 +12,13 @@ bool Coin::flip_Coin(){
     double result = dis(gen);
     return chance_heads > result;
 }
-std::vector<bool> Coin::flip_Sequence(int flips){
-    std::vector<bool> results;
+int Coin::flip_Sequence(int flips){
+    int num_heads = 0;
     for(int i = 0; i < flips; i++){
         bool result = flip_Coin();
-        std::cout << result << ' ';
-        results.push_back(result);
+        if(result) num_heads++;
     }
-    std::cout << '\n';
-    return results;
+    return num_heads;
 }
 double Coin::get_chance_heads(){
     return chance_heads;

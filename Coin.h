@@ -11,7 +11,7 @@ class Coin{
     public:
     Coin(double chance);
     bool flip_Coin();
-    std::vector<bool> flip_Sequence(int flips);
+    int flip_Sequence(int flips);
     double get_chance_heads();
 };
 
