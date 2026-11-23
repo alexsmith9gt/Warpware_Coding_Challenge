@@ -71,7 +71,7 @@ int one_Run(){
     // std::cout << num_heads << "Out of " << num_flips << '\n';
 
     // Second qualifying round
-    auto [additional_flips, additional_heads, new_best] = qualifier_Round(best_coins, 2, 1);
+    auto [additional_flips, additional_heads, new_best] = qualifier_Round(best_coins, 1, 1);
     // std::cout << additional_heads << "Out of " << additional_flips << '\n';
     num_heads += additional_heads;
     num_flips += additional_flips;
