@@ -28,7 +28,9 @@ int one_Run(){
             num_heads++;
         }
         else{
-            hot_hand = dis(gen);
+            int temp = hot_hand;
+            // guarantees a switch of coin to be flipped
+            while(temp == hot_hand) hot_hand = dis(gen);
         }
     }
     // std::cout << num_heads << "Out of " << num_flips << '\n';
