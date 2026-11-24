@@ -1,7 +1,6 @@
 #include <vector>
 #include <iostream>
 #include "coin.h"
-#include <tuple>
 
 // Function for building the 5 coins
 // Returns vector with the 5 coins
@@ -23,17 +22,37 @@ int one_Run(){
     int num_heads = 0;
     int num_flips = 20;
     int hot_hand = dis(gen);
+    std::vector<int> available = {0,1,2,3,4};
+    int plus_minus[5] {};
     for(int i = 0; i < num_flips; i++){
         if(coins[hot_hand].flip_Coin()){
             num_heads++;
+            plus_minus[hot_hand]++;
         }
         else{
+            plus_minus[hot_hand]--;
             int temp = hot_hand;
-            // guarantees a switch of coin to be flipped
-            while(temp == hot_hand) hot_hand = dis(gen);
+            if(plus_minus[hot_hand] <= -4){
+                std::erase(available, hot_hand);
+            }
+            // reinstate available set because there's no available coins left
+            if(available.size() == 1){
+                available = {0,1,2,3,4};
+                for(int i = 0; i < 5; i++){
+                    plus_minus[i] = 0;
+                }
+            }
+            if(plus_minus[hot_hand] < 1){
+                std::uniform_int_distribution<> dis(0, available.size() - 1);
+                // guarantees coin isn't set to current
+                while(temp == hot_hand){
+                    // std::cout << "changing coin \n";
+                    temp = dis(gen);
+                }
+                hot_hand = temp;
+            }
         }
     }
-    // std::cout << num_heads << "Out of " << num_flips << '\n';
     return num_heads;
 
 }
@@ -41,7 +60,7 @@ int one_Run(){
 // Function for performin 100 runs of 20 flips and collecting/producing data from the 100 runs
 // Returns nothing but prints out the data
 void one_Hundred_Runs(){
-    int num_runs = 100;
+    int num_runs = 10000;
     int total_heads = 0;
     int max_heads = 0;
     int min_heads = 20;
@@ -66,6 +85,7 @@ void one_Hundred_Runs(){
 }
 int main(){
     // int num = one_Run();
+    // std::cout << num << " heads were flipped\n";
     one_Hundred_Runs();
     return 0;
 }
