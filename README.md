@@ -6,14 +6,18 @@ The repo contains several branches implementing different algorithms to solve th
 # Comments on the Master Code
 
 ## How to Run
-Compile the program with:
+- Compile the program with:
 
-    g++  .\main.cpp .\Coin.cpp -o main
+        g++ -std=c++20 main.cpp Coin.cpp -o main
 
-Then run the program with:
+- Then run the program with:
 
-    .\main
+    - Windows:
 
+            .\main.exe
+    - Linux:
+
+            ./main
 You will then be presented with a welcome menu and a line detailing your options. The options were designed in order to make it easier to run multiple trials in a row within one instance of the program.
 
 - Enter r in order to perform a trial of 100 runs and have the data displayed in the terminal.
