@@ -86,7 +86,7 @@ void one_Hundred_Runs(){
     int num_runs = 100;
     int total_heads = 0;
     int max_heads = 0;
-    int min_heads = 0;
+    int min_heads = 20;
     int above_average = 0;
     int below_average = 0;
     int heads;
