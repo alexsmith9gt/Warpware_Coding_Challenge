@@ -1,6 +1,8 @@
 #include <vector>
 #include <iostream>
-#include "coin.h"
+#include <random>
+#include "Coin.h"
+
 
 // Function for building the 5 coins
 // Returns vector with the 5 coins
@@ -21,9 +23,13 @@ int one_Run(){
     std::uniform_int_distribution<> dis(0, coins.size() - 1);
     int num_heads = 0;
     int num_flips = 20;
+    // starting with a random coin
     int hot_hand = dis(gen);
+    // vector holding the indices of non-removed coins
     std::vector<int> available = {0,1,2,3,4};
+    // array for holding the plus minus of each value by index
     int plus_minus[5] {};
+
     for(int i = 0; i < num_flips; i++){
         if(coins[hot_hand].flip_Coin()){
             num_heads++;
@@ -32,6 +38,7 @@ int one_Run(){
         else{
             plus_minus[hot_hand]--;
             int temp = hot_hand;
+            // get rid of particularly bad coins
             if(plus_minus[hot_hand] <= -4){
                 std::erase(available, hot_hand);
             }
@@ -42,11 +49,11 @@ int one_Run(){
                     plus_minus[i] = 0;
                 }
             }
+            // don't remove after one mistep
             if(plus_minus[hot_hand] < 1){
                 std::uniform_int_distribution<> dis(0, available.size() - 1);
                 // guarantees coin isn't set to current
                 while(temp == hot_hand){
-                    // std::cout << "changing coin \n";
                     temp = dis(gen);
                 }
                 hot_hand = temp;
@@ -83,9 +90,24 @@ void one_Hundred_Runs(){
     std::cout << "The number of runs with less than 10 heads was " << below_average << '\n';
 
 }
+
 int main(){
-    // int num = one_Run();
-    // std::cout << num << " heads were flipped\n";
-    one_Hundred_Runs();
+    std::cout << "Welcome to Alex Smith's Solution to the Warpware Coding Challenge!\n";
+    std::cout << "This program is implementing the Hot Hand solution with a plus/minus alteration.\n";
+    bool back_out = false;
+    char response;
+    while(!back_out){
+        std::cout << "\nPress \'q\' and Enter to end the program or \'r\' and Enter to run another trial:\n";
+        std::cin >> response;
+        if(response == 'r'){
+            one_Hundred_Runs();
+        }
+        else if(response == 'q'){
+            back_out = true;
+        }
+        else{
+            std::cout << "Invalid input, please try again";
+        }
+    }
     return 0;
 }

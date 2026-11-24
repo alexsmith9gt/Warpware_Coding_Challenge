@@ -1,7 +1,6 @@
 #ifndef COIN_H
 #define COIN_H
 #include <random>
-#include <vector>
 class Coin{
     private:
     double chance_heads;
@@ -12,7 +11,7 @@ class Coin{
     Coin(double chance);
     bool flip_Coin();
     int flip_Sequence(int flips);
-    double get_chance_heads();
+    double get_chance_heads() const;
 };
 
 
