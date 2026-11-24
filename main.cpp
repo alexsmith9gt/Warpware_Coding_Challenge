@@ -60,7 +60,7 @@ int one_Run(){
 // Function for performin 100 runs of 20 flips and collecting/producing data from the 100 runs
 // Returns nothing but prints out the data
 void one_Hundred_Runs(){
-    int num_runs = 10000;
+    int num_runs = 100;
     int total_heads = 0;
     int max_heads = 0;
     int min_heads = 20;
