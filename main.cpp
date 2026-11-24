@@ -67,11 +67,11 @@ std::tuple<int, int, std::vector<Coin>> qualifier_Round(std::vector<Coin>& coins
 int one_Run(){
     std::vector<Coin> coins = build_Coins();
     // First qualifying round
-    auto [num_flips, num_heads, best_coins] = qualifier_Round(coins, 2, 2);
+    auto [num_flips, num_heads, best_coins] = qualifier_Round(coins, 1, 2);
     // std::cout << num_heads << "Out of " << num_flips << '\n';
 
     // Second qualifying round
-    auto [additional_flips, additional_heads, new_best] = qualifier_Round(best_coins, 1, 1);
+    auto [additional_flips, additional_heads, new_best] = qualifier_Round(best_coins, 2, 1);
     // std::cout << additional_heads << "Out of " << additional_flips << '\n';
     num_heads += additional_heads;
     num_flips += additional_flips;
